@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pruebas_limpio/components/botones/modobrillo.dart';
+import 'package:pruebas_limpio/components/interfaces/appbar.dart';
 
 void main() {
   runApp(const MyAplicacion());
@@ -22,34 +22,34 @@ class _MyAplicacionState extends State<MyAplicacion> {
       // Configuración de la aplicación
       home: Scaffold(
         // Barra de aplicación (AppBar)
-        appBar: AppBar(
-          title: const Text('FoxHound APP'), // Título de la barra de aplicación
-          actions: [
-            // Botón de cambio de modo claro/oscuro en la barra de aplicación
-            MyIconButtonMode(
-              modoBrilllo: modoBrilllo,
-              presiona: () {
-                setState(() {
-                  // Cambia el brillo al presionar el botón de la barra de aplicación
-                  modoBrilllo = modoBrilllo == Brightness.dark
-                      ? Brightness.light
-                      : Brightness.dark;
-                });
-              },
-            ),
-          ],
+        appBar: MyAppBar(
+          titulo: 'FoxHound APP',
+          modoBrillo: modoBrilllo,
+          onPresiona: () {
+            setState(() {
+              modoBrilllo = modoBrilllo == Brightness.dark
+                  ? Brightness.light
+                  : Brightness.dark;
+            });
+          },
         ),
         // Cuerpo de la pantalla
-        body: const Center(
-          child: Text('body'), // Contenido del cuerpo de la pantalla
+        body: Center(
+          child: FilledButton(
+              onPressed: () {},
+              child: const Text(
+                  'Presioname')), // Contenido del cuerpo de la pantalla
         ),
       ),
       // Configuración adicional de la aplicación
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          brightness: modoBrilllo,
-          useMaterial3: true,
-          colorSchemeSeed: Colors.deepPurple),
+        brightness: modoBrilllo,
+        useMaterial3: true,
+        colorSchemeSeed: Colors.red,
+        primaryColorLight: Colors.red.shade50,
+        primaryColorDark: Colors.red.shade900,
+      ),
     );
   }
 }

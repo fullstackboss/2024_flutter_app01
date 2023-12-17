@@ -19,6 +19,7 @@ class MyIconButtonMode extends StatelessWidget {
         modoBrilllo == Brightness.dark
             ? Icons.light_mode_outlined
             : Icons.dark_mode_outlined,
+        color: Theme.of(context).primaryColorLight,
       ),
     );
   }
